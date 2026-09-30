@@ -1,6 +1,6 @@
 name: Purrfect Release CI
 permissions:
-  contents: write
+  contents: read
 
 on:
   workflow_dispatch:
@@ -207,6 +207,8 @@ jobs:
           name: purrfect-armv7-release
           path: app/build/outputs/apk/armv7/release/*.apk
   make_release:
+    permissions:
+      contents: write
     needs: [job_armv7, job_armv8]
     runs-on: ubuntu-latest
     steps:
